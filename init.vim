@@ -1,3 +1,4 @@
+
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 " Declare the list of plugins.
@@ -23,6 +24,7 @@ call plug#end()
 
 " Regular Things
 set relativenumber
+set clipboard+=unnamedplus
 set number
 set tabstop=4 softtabstop=4
 set shiftwidth=4
