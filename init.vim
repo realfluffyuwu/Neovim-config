@@ -11,6 +11,7 @@ Plug 'preservim/nerdtree' " Nerd Tree, Netrw Replacement
 Plug 'vim-airline/vim-airline' " Status Bar
 Plug 'ctrlpvim/ctrlp.vim' " File Finder
 Plug 'tree-sitter/tree-sitter' " Tree Sitter
+Plug 'OmniSharp/omnisharp-vim' " Syntax Highlighting for Nvim
 
 Plug 'vim-airline/vim-airline-themes' " Themes for Airline, who could have guessed
 
