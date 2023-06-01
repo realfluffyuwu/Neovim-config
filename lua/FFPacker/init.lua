@@ -11,6 +11,9 @@ return require('packer').startup(function(use)
 
 	}
 
+	--use ("rrethy/vim-hexokinase", {run = ":terminal make hexokinase<Enter>"})
+	use 'NvChad/nvim-colorizer.lua'
+
 	-- Neon Theme
 	use "rafamadriz/neon"
 
