@@ -5,10 +5,15 @@ return require('packer').startup(function(use)
 
 	-- Telescope
 	use {
-		"nvim-telescope/telescope.nvim", tag = "0.1.0",
+		"nvim-telescope/telescope.nvim",
 		-- or ,branch = "0.1.x",
-		requires = { {"nvim-lua/plenary.nvim"} }
+		requires = { "nvim-lua/plenary.nvim" }
 
+	}
+	-- Telescope File Browser
+	use {
+		"nvim-telescope/telescope-file-browser.nvim",
+		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
 	}
 
 	--use ("rrethy/vim-hexokinase", {run = ":terminal make hexokinase<Enter>"})
