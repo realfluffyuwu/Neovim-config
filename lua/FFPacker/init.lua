@@ -23,8 +23,8 @@ return require('packer').startup(function(use)
 	--use ("rrethy/vim-hexokinase", {run = ":terminal make hexokinase<Enter>"})
 	use "NvChad/nvim-colorizer.lua"
 
-	-- Interface for Neovim Plugins
-	use {"neoclide/coc.nvim", branch="release"}
+	-- Interface for VsCode Plugins
+	--use {"neoclide/coc.nvim", branch="release"}
 
 	-- Neon Theme
 	use "rafamadriz/neon"
