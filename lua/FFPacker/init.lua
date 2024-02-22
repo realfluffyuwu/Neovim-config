@@ -1,14 +1,18 @@
-
 return require('packer').startup(function(use)
 	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
+	use "wbthomason/packer.nvim"
+
+	-- Tmux Navigator
+	-- use 'christoomey/vim-tmux-navigator'
+
+	-- Formatter
+	use "mhartington/formatter.nvim"
 
 	-- Telescope
 	use {
 		"nvim-telescope/telescope.nvim",
 		-- or ,branch = "0.1.x",
 		requires = { "nvim-lua/plenary.nvim" }
-
 	}
 	-- Telescope File Browser
 	use {
@@ -17,7 +21,10 @@ return require('packer').startup(function(use)
 	}
 
 	--use ("rrethy/vim-hexokinase", {run = ":terminal make hexokinase<Enter>"})
-	use 'NvChad/nvim-colorizer.lua'
+	use "NvChad/nvim-colorizer.lua"
+
+	-- Interface for Neovim Plugins
+	use {"neoclide/coc.nvim", branch="release"}
 
 	-- Neon Theme
 	use "rafamadriz/neon"
@@ -25,8 +32,8 @@ return require('packer').startup(function(use)
 	-- Tokyo Night
 	use "folke/tokyonight.nvim"
 	-- Tree Sitter
-	use("nvim-treesitter/nvim-treesitter", {run = ":TSUpdate"})
-	--use("nvim-treesitter/playground")
+	use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+	use "nvim-treesitter/playground"
 
 	-- Harpoon
 	use "theprimeagen/harpoon"
@@ -54,14 +61,15 @@ return require('packer').startup(function(use)
 
 	-- LSP
 	use {
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
-	"neovim/nvim-lspconfig",
-	"hrsh7th/nvim-cmp",
-	"hrsh7th/cmp-nvim-lsp",
-	"L3MON4D3/LuaSnip",
-	"saadparwaiz1/cmp_luasnip",
-	"rafamadriz/friendly-snippets",
-}
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig",
+		"mfussenegger/nvim-lint",
+		"hrsh7th/nvim-cmp",
+		"hrsh7th/cmp-nvim-lsp",
+		"L3MON4D3/LuaSnip",
+		"saadparwaiz1/cmp_luasnip",
+		"rafamadriz/friendly-snippets",
+	}
 
 end)
