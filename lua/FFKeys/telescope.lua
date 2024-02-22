@@ -9,17 +9,25 @@ require("telescope").setup {
 
 require("telescope").load_extension "file_browser"
 
---vim.api.nvim_set_keymap(
---	"n",
---	"<space>fs",
---	":Telescope file_browser<CR>",
---	{ noremap = true }
---)
+vim.api.nvim_set_keymap(
+	"n",
+	"<space>fs",
+	":Telescope find_files <CR>",
+	{ noremap = true }
+)
 
 vim.api.nvim_set_keymap(
+	"n",
+	"<space>sf",
+	":Telescope find_files <CR>",
+	{ noremap = true }
+)
+
+-- File Browser
+vim.api.nvim_set_keymap(
   "n",
-  "<space>fs",
-  ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+  "<space><space>",
+  ":Telescope file_browser <CR>",
   { noremap = true }
 )
 --local builtin = require("telescope.builtin")
