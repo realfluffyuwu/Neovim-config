@@ -2,9 +2,6 @@ return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use "wbthomason/packer.nvim"
 
-	-- Tmux Navigator
-	-- use 'christoomey/vim-tmux-navigator'
-
 	-- Formatter
 	use "mhartington/formatter.nvim"
 
@@ -23,16 +20,13 @@ return require('packer').startup(function(use)
 	--use ("rrethy/vim-hexokinase", {run = ":terminal make hexokinase<Enter>"})
 	use "NvChad/nvim-colorizer.lua"
 
-	-- Interface for VsCode Plugins
-	--use {"neoclide/coc.nvim", branch="release"}
-
 	-- Neon Theme
 	use "rafamadriz/neon"
 
 	-- Tokyo Night
 	use "folke/tokyonight.nvim"
 	-- Tree Sitter
-	use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 	use "nvim-treesitter/playground"
 
 	-- Harpoon
@@ -43,37 +37,25 @@ return require('packer').startup(function(use)
 	-- Git
 	use "tpope/vim-fugitive"
 
-	-- Nerd Tree
-	--use "preservim/nerdtree"
-	--use "tiagofumo/vim-nerdtree-syntax-highlight"
-	--use "Xuyuanp/nerdtree-git-plugin"
-	--use "PhilRunninger/nerdtree-visual-selection"
-
-	-- Airline
-	--use "vim-airline/vim-airline"
-	--use "vim-airline/vim-airline-themes"		
-
 	-- Lua Line, AirLine Replacement
 	use {
 		"nvim-lualine/lualine.nvim",
-		requires = {"nvim-tree/nvim-web-devicons"}
+		requires = { "nvim-tree/nvim-web-devicons" }
 	}
 
 	-- LSP
 	use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v3.x',
-	  requires = {
-	    --- Uncomment the two plugins below if you want to manage the language servers from neovim
-	    {'williamboman/mason.nvim'},
-	    {'williamboman/mason-lspconfig.nvim'},
-	    -- LSP Support
-	    {'neovim/nvim-lspconfig'},
-	    -- Autocompletion
-	    {'hrsh7th/nvim-cmp'},
-	    {'hrsh7th/cmp-nvim-lsp'},
-	    {'L3MON4D3/LuaSnip'},
-	  }
+		'VonHeikemen/lsp-zero.nvim',
+		branch = 'v3.x',
+		requires = {
+			{ 'williamboman/mason.nvim' },
+			{ 'williamboman/mason-lspconfig.nvim' },
+			-- LSP Support
+			{ 'neovim/nvim-lspconfig' },
+			-- Autocompletion
+			{ 'hrsh7th/nvim-cmp' },
+			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ 'L3MON4D3/LuaSnip' },
+		}
 	}
-
 end)
