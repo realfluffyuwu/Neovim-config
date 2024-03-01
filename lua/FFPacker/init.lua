@@ -5,6 +5,10 @@ return require('packer').startup(function(use)
 	-- Formatter
 	use "mhartington/formatter.nvim"
 
+	use "michaelrommel/nvim-silicon"
+
+	use "Exafunction/codeium.vim"
+
 	-- Telescope
 	use {
 		"nvim-telescope/telescope.nvim",

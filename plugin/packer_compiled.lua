@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/jordon/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["codeium.vim"] = {
+    loaded = true,
+    path = "/home/jordon/.local/share/nvim/site/pack/packer/start/codeium.vim",
+    url = "https://github.com/Exafunction/codeium.vim"
+  },
   ["formatter.nvim"] = {
     loaded = true,
     path = "/home/jordon/.local/share/nvim/site/pack/packer/start/formatter.nvim",
@@ -133,6 +138,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jordon/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-silicon"] = {
+    loaded = true,
+    path = "/home/jordon/.local/share/nvim/site/pack/packer/start/nvim-silicon",
+    url = "https://github.com/michaelrommel/nvim-silicon"
   },
   ["nvim-treesitter"] = {
     loaded = true,
