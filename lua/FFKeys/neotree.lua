@@ -1,24 +1,5 @@
 require("neo-tree").setup({
-	window = {
-		mappings = {
-			["p"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
-			["P"] = "focus_preview",
-			["<C-Up>"] = { "scroll_preview", config = { direction = 10 } },
-			["<C-Down>"] = { "scroll_preview", config = { direction = -10 } },
-		}
-	},
-	event_handlers = {
-		event = "neo_tree_buffer_enter",
-		handler = function(arg)
-			vim.cmd [[
-          setlocal relativenumber
-        ]]
-		end,
-	}
-})
 
-
-local config = {
 	-- If a user has a sources list it will replace this one.
 	-- Only sources listed here will be loaded.
 	-- You can also add an external source by adding it's name to this list.
@@ -68,7 +49,7 @@ local config = {
 	-- source_selector provides clickable tabs to switch between sources.
 	source_selector = {
 		winbar = true,                       -- toggle to show selector on winbar
-		statusline = false,                  -- toggle to show selector on statusline
+		statusline = true,                   -- toggle to show selector on statusline
 		show_scrolled_off_parent_node = false, -- this will replace the tabs with the parent path
 		-- of the top visible node when scrolled down.
 		sources = {
@@ -76,11 +57,11 @@ local config = {
 			{ source = "buffers" },
 			{ source = "git_status" },
 		},
-		content_layout = "start", -- only with `tabs_layout` = "equal", "focus"
+		content_layout = "center", -- only with `tabs_layout` = "equal", "focus"
 		--                start  : |/ 󰓩 bufname     \/...
 		--                end    : |/     󰓩 bufname \/...
 		--                center : |/   󰓩 bufname   \/...
-		tabs_layout = "equal", -- start, end, center, equal, focus
+		tabs_layout = "center", -- start, end, center, equal, focus
 		--             start  : |/  a  \/  b  \/  c  \            |
 		--             end    : |            /  a  \/  b  \/  c  \|
 		--             center : |      /  a  \/  b  \/  c  \      |
@@ -125,11 +106,7 @@ local config = {
 		},
 		{
 			event = "neo_tree_buffer_enter",
-			handler = function(arg)
-				vim.cmd [[
-          setlocal relativenumber
-        ]]
-			end,
+			handler = function() vim.opt_local.relativenumber = true end,
 		},
 		--  {
 		--    event = "file_opened",
@@ -708,4 +685,4 @@ local config = {
 			},
 		},
 	},
-}
+})
