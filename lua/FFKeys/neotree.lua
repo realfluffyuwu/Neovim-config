@@ -1,3 +1,23 @@
+require("neo-tree").setup({
+	window = {
+		mappings = {
+			["p"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
+			["P"] = "focus_preview",
+			["<C-Up>"] = { "scroll_preview", config = { direction = 10 } },
+			["<C-Down>"] = { "scroll_preview", config = { direction = -10 } },
+		}
+	},
+	event_handlers = {
+		event = "neo_tree_buffer_enter",
+		handler = function(arg)
+			vim.cmd [[
+          setlocal relativenumber
+        ]]
+		end,
+	}
+})
+
+
 local config = {
 	-- If a user has a sources list it will replace this one.
 	-- Only sources listed here will be loaded.
@@ -47,7 +67,7 @@ local config = {
 	use_default_mappings = true,
 	-- source_selector provides clickable tabs to switch between sources.
 	source_selector = {
-		winbar = false,                      -- toggle to show selector on winbar
+		winbar = true,                       -- toggle to show selector on winbar
 		statusline = false,                  -- toggle to show selector on statusline
 		show_scrolled_off_parent_node = false, -- this will replace the tabs with the parent path
 		-- of the top visible node when scrolled down.
@@ -89,78 +109,86 @@ local config = {
 		highlight_separator_active = "NeoTreeTabSeparatorActive",
 	},
 	--
-	--event_handlers = {
-	--  {
-	--    event = "before_render",
-	--    handler = function (state)
-	--      -- add something to the state that can be used by custom components
-	--    end
-	--  },
-	--  {
-	--    event = "file_opened",
-	--    handler = function(file_path)
-	--      --auto close
-	--      require("neo-tree.command").execute({ action = "close" })
-	--    end
-	--  },
-	--  {
-	--    event = "file_opened",
-	--    handler = function(file_path)
-	--      --clear search after opening a file
-	--      require("neo-tree.sources.filesystem").reset_search()
-	--    end
-	--  },
-	--  {
-	--    event = "file_renamed",
-	--    handler = function(args)
-	--      -- fix references to file
-	--      print(args.source, " renamed to ", args.destination)
-	--    end
-	--  },
-	--  {
-	--    event = "file_moved",
-	--    handler = function(args)
-	--      -- fix references to file
-	--      print(args.source, " moved to ", args.destination)
-	--    end
-	--  },
-	--  {
-	--    event = "neo_tree_buffer_enter",
-	--    handler = function()
-	--      vim.cmd 'highlight! Cursor blend=100'
-	--    end
-	--  },
-	--  {
-	--    event = "neo_tree_buffer_leave",
-	--    handler = function()
-	--      vim.cmd 'highlight! Cursor guibg=#5f87af blend=0'
-	--    end
-	--  },
-	-- {
-	--   event = "neo_tree_window_before_open",
-	--   handler = function(args)
-	--     print("neo_tree_window_before_open", vim.inspect(args))
-	--   end
-	-- },
-	-- {
-	--   event = "neo_tree_window_after_open",
-	--   handler = function(args)
-	--     vim.cmd("wincmd =")
-	--   end
-	-- },
-	-- {
-	--   event = "neo_tree_window_before_close",
-	--   handler = function(args)
-	--     print("neo_tree_window_before_close", vim.inspect(args))
-	--   end
-	-- },
-	-- {
-	--   event = "neo_tree_window_after_close",
-	--   handler = function(args)
-	--     vim.cmd("wincmd =")
-	--   end
-	-- }
-	--},
+	event_handlers = {
+		--  {
+		--    event = "before_render",
+		--    handler = function (state)
+		--      -- add something to the state that can be used by custom components
+		--    end
+		--  },
+		{
+			event = "file_opened",
+			handler = function(file_path)
+				--auto close
+				require("neo-tree.command").execute({ action = "close" })
+			end
+		},
+		{
+			event = "neo_tree_buffer_enter",
+			handler = function(arg)
+				vim.cmd [[
+          setlocal relativenumber
+        ]]
+			end,
+		},
+		--  {
+		--    event = "file_opened",
+		--    handler = function(file_path)
+		--      --clear search after opening a file
+		--      require("neo-tree.sources.filesystem").reset_search()
+		--    end
+		--  },
+		{
+			event = "file_renamed",
+			handler = function(args)
+				-- fix references to file
+				print(args.source, " renamed to ", args.destination)
+			end
+		},
+		{
+			event = "file_moved",
+			handler = function(args)
+				-- fix references to file
+				print(args.source, " moved to ", args.destination)
+			end
+		},
+		{
+			event = "neo_tree_buffer_enter",
+			handler = function()
+				vim.cmd 'highlight! Cursor blend=100'
+			end
+		},
+		{
+			event = "neo_tree_buffer_leave",
+			handler = function()
+				vim.cmd 'highlight! Cursor guibg=#5f87af blend=0'
+			end
+		},
+		-- {
+		--   event = "neo_tree_window_before_open",
+		--   handler = function(args)
+		--     print("neo_tree_window_before_open", vim.inspect(args))
+		--   end
+		-- },
+		-- {
+		--   event = "neo_tree_window_after_open",
+		--   handler = function(args)
+		--     vim.cmd("wincmd =")
+		--   end
+		-- },
+		-- {
+		--   event = "neo_tree_window_before_close",
+		--   handler = function(args)
+		--     print("neo_tree_window_before_close", vim.inspect(args))
+		--   end
+		-- },
+		-- {
+		--   event = "neo_tree_window_after_close",
+		--   handler = function(args)
+		--     vim.cmd("wincmd =")
+		--   end
+		-- }
+	},
 	default_component_configs = {
 		container = {
 			enable_character_fade = true,
@@ -411,10 +439,10 @@ local config = {
 		window = {
 			mappings = {
 				["H"] = "toggle_hidden",
-				["/"] = "fuzzy_finder",
+				--["/"] = "fuzzy_finder",
 				["D"] = "fuzzy_finder_directory",
-				--["/"] = "filter_as_you_type", -- this was the default until v1.28
-				["#"] = "fuzzy_sorter", -- fuzzy sorting using the fzy algorithm
+				["/"] = "filter_as_you_type", -- this was the default until v1.28
+				["#"] = "fuzzy_sorter",   -- fuzzy sorting using the fzy algorithm
 				-- ["D"] = "fuzzy_sorter_directory",
 				["f"] = "filter_on_submit",
 				["<C-x>"] = "clear_filter",
@@ -523,7 +551,7 @@ local config = {
 		follow_current_file = {
 			enabled = false,                    -- This will find and focus the file in the active buffer every time
 			--               -- the current file is changed while the tree is open.
-			leave_dirs_open = false,            -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+			leave_dirs_open = true,             -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
 		},
 		hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
 		-- in whatever position is specified in window.position
@@ -536,14 +564,14 @@ local config = {
 	buffers = {
 		bind_to_cwd = true,
 		follow_current_file = {
-			enabled = true,       -- This will find and focus the file in the active buffer every time
+			enabled = true,      -- This will find and focus the file in the active buffer every time
 			--              -- the current file is changed while the tree is open.
-			leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+			leave_dirs_open = true, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
 		},
 		group_empty_dirs = true, -- when true, empty directories will be grouped together
-		show_unloaded = false,  -- When working with sessions, for example, restored but unfocused buffers
+		show_unloaded = true,  -- When working with sessions, for example, restored but unfocused buffers
 		-- are mark as "unloaded". Turn this on to view these unloaded buffer.
-		terminals_first = false, -- when true, terminals will be listed before file buffers
+		terminals_first = true, -- when true, terminals will be listed before file buffers
 		window = {
 			mappings = {
 				["<bs>"] = "navigate_up",

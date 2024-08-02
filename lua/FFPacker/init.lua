@@ -5,9 +5,52 @@ return require('packer').startup(function(use)
 	-- Formatter
 	use "mhartington/formatter.nvim"
 
+	-- Silicon
 	use "michaelrommel/nvim-silicon"
 
+	-- Codeium
 	use "Exafunction/codeium.vim"
+
+	-- Comment
+	use {
+		'numToStr/Comment.nvim',
+		config = function()
+			require('Comment').setup()
+		end
+	}
+
+	use "tpope/vim-repeat"
+
+	-- Notify
+	use 'rcarriga/nvim-notify'
+
+	-- Floaterm
+	use {
+		'voldikss/vim-floaterm',
+		config = function()
+			vim.g.floaterm_width = 0.8
+			vim.g.floaterm_height = 0.8
+		end
+	}
+
+	-- Which-key
+	use {
+		"folke/which-key.nvim",
+		config = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end
+
+	}
+
+	-- noice
+	use {
+		"folke/noice.nvim",
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+	}
 
 	-- vim godot
 	use "habamax/vim-godot"
