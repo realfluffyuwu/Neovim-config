@@ -9,16 +9,41 @@ return require('packer').startup(function(use)
 
 	use "Exafunction/codeium.vim"
 
+	-- vim godot
+	use "habamax/vim-godot"
+
 	-- Telescope
 	use {
 		"nvim-telescope/telescope.nvim",
 		-- or ,branch = "0.1.x",
 		requires = { "nvim-lua/plenary.nvim" }
 	}
+
+	-- Window Picker
+	use {
+		's1n7ax/nvim-window-picker',
+		tag = 'v2.*',
+		config = function()
+			require 'window-picker'.setup()
+		end,
+	}
+
 	-- Telescope File Browser
 	use {
 		"nvim-telescope/telescope-file-browser.nvim",
 		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+	}
+
+	-- NeoTree
+	use {
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+		}
 	}
 
 	use({
@@ -31,10 +56,14 @@ return require('packer').startup(function(use)
 	use "NvChad/nvim-colorizer.lua"
 
 	-- Neon Theme
-	use "rafamadriz/neon"
+	--use "rafamadriz/neon"
 
 	-- Tokyo Night
-	use "folke/tokyonight.nvim"
+	--use "folke/tokyonight.nvim"
+
+	-- Moonfly Theme
+	use "bluz71/vim-moonfly-colors"
+
 	-- Tree Sitter
 	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 	use "nvim-treesitter/playground"

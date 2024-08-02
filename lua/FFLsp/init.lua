@@ -18,6 +18,82 @@ require('mason-lspconfig').setup({
 	},
 })
 
+require('lspconfig').gdscript.setup({
+	flags = {
+		debounce_text_changes = 100,
+	},
+	on_attach = function(client)
+		-- Godot Thing
+		local _notify = client.notify
+		client.notify = function(method, params)
+			if method == 'textDocument/didClose' then
+				-- Godot doesn't implement didClose yet
+				return
+			end
+			_notify(method, params)
+		end
+	end
+})
+
+require('lspconfig').efm.setup({
+	on_attach = lsp_zero.on_attach,
+	flags = {
+		debounce_text_changes = 100,
+	},
+
+	init_options = {
+		documentFormatting = true,
+	},
+	settings = {
+		rootMarkers = { ".git/" },
+		languages = {
+			gdscript = {
+				{ formatCommand = "gdformat -l 80 -", formatStdin = true }
+			}
+		},
+	},
+})
+
+require('lspconfig').pyright.setup({
+	on_attach = lsp_zero.on_attach,
+
+})
+require('lspconfig').rust_analyzer.setup({
+	on_attach = lsp_zero.on_attach,
+})
+
+require('lspconfig').tsserver.setup({
+	on_attach = lsp_zero.on_attach,
+})
+
+require('lspconfig').clangd.setup({
+	on_attach = lsp_zero.on_attach,
+})
+
+require('lspconfig').lua_ls.setup({
+	on_attach = lsp_zero.on_attach,
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = 'LuaJIT',
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { 'vim' },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file('', true),
+			},
+			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
+})
+
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 

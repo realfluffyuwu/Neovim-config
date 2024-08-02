@@ -24,3 +24,4 @@ vim.o.hidden = true
 vim.o.tabpagemax = 4
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
 vim.g.netrw_banner = 0
+vim.o.foldmethod = expr
