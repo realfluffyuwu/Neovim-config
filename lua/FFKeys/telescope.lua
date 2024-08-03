@@ -14,7 +14,8 @@ require("telescope").load_extension "file_browser"
 vim.keymap.set("n", "<leader>sf", builtin.live_grep, {})
 --vim.keymap.set("n", "<leader><leader>", builtin.find_files, {})
 vim.keymap.set("n", "<leader><leader>", ":Neotree filesystem reveal float<CR>", {})
-vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+--vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+vim.keymap.set("n", "<leader>fb", ":Neotree buffers reveal float<CR>", {})
 vim.keymap.set("n", "<leader>sd", builtin.diagnostics, {})
 
 vim.keymap.set("n", "/", function()

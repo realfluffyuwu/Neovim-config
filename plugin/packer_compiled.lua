@@ -85,6 +85,12 @@ _G.packer_plugins = {
     path = "/home/jordon/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["alpha-nvim"] = {
+    config = { "\27LJ\2\n^\0\0\5\0\5\0\n6\0\0\0'\2\1\0B\0\2\0029\0\2\0006\2\0\0'\4\3\0B\2\2\0029\2\4\2B\0\2\1K\0\1\0\vconfig\24alpha.themes.fluffy\nsetup\nalpha\frequire\0" },
+    loaded = true,
+    path = "/home/jordon/.local/share/nvim/site/pack/packer/start/alpha-nvim",
+    url = "https://github.com/goolord/alpha-nvim"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/jordon/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -109,7 +115,12 @@ _G.packer_plugins = {
   harpoon = {
     loaded = true,
     path = "/home/jordon/.local/share/nvim/site/pack/packer/start/harpoon",
-    url = "https://github.com/theprimeagen/harpoon"
+    url = "https://github.com/ThePrimeagen/harpoon"
+  },
+  harpoonEx = {
+    loaded = true,
+    path = "/home/jordon/.local/share/nvim/site/pack/packer/start/harpoonEx",
+    url = "https://github.com/mike-jl/harpoonEx"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,
@@ -130,6 +141,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jordon/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["neo-tree-harpoon.nvim"] = {
+    loaded = true,
+    path = "/home/jordon/.local/share/nvim/site/pack/packer/start/neo-tree-harpoon.nvim",
+    url = "https://github.com/jackielii/neo-tree-harpoon.nvim"
   },
   ["neo-tree.nvim"] = {
     loaded = true,
@@ -248,6 +264,11 @@ _G.packer_plugins = {
     path = "/home/jordon/.local/share/nvim/site/pack/packer/start/vim-sqf-syntax",
     url = "https://github.com/sqwishy/vim-sqf-syntax"
   },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/home/jordon/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
+  },
   ["which-key.nvim"] = {
     config = { "\27LJ\2\nD\0\0\2\0\4\0\t6\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\1\0)\1,\1=\1\3\0K\0\1\0\15timeoutlen\ftimeout\6o\bvim\0" },
     loaded = true,
@@ -261,22 +282,26 @@ time([[Defining packer_plugins]], false)
 time([[Config for nvim-window-picker]], true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18window-picker\frequire\0", "config", "nvim-window-picker")
 time([[Config for nvim-window-picker]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-try_loadstring("\27LJ\2\nD\0\0\2\0\4\0\t6\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\1\0)\1,\1=\1\3\0K\0\1\0\15timeoutlen\ftimeout\6o\bvim\0", "config", "which-key.nvim")
-time([[Config for which-key.nvim]], false)
--- Config for: Comment.nvim
-time([[Config for Comment.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
-time([[Config for Comment.nvim]], false)
--- Config for: vim-floaterm
-time([[Config for vim-floaterm]], true)
-try_loadstring("\27LJ\2\nZ\0\0\2\0\4\1\t6\0\0\0009\0\1\0*\1\0\0=\1\2\0006\0\0\0009\0\1\0*\1\0\0=\1\3\0K\0\1\0\20floaterm_height\19floaterm_width\6g\bvimµæÌ™\19™³¦ÿ\3\0", "config", "vim-floaterm")
-time([[Config for vim-floaterm]], false)
 -- Config for: color-picker.nvim
 time([[Config for color-picker.nvim]], true)
 try_loadstring("\27LJ\2\n,\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\17color-picker\frequire\0", "config", "color-picker.nvim")
 time([[Config for color-picker.nvim]], false)
+-- Config for: alpha-nvim
+time([[Config for alpha-nvim]], true)
+try_loadstring("\27LJ\2\n^\0\0\5\0\5\0\n6\0\0\0'\2\1\0B\0\2\0029\0\2\0006\2\0\0'\4\3\0B\2\2\0029\2\4\2B\0\2\1K\0\1\0\vconfig\24alpha.themes.fluffy\nsetup\nalpha\frequire\0", "config", "alpha-nvim")
+time([[Config for alpha-nvim]], false)
+-- Config for: vim-floaterm
+time([[Config for vim-floaterm]], true)
+try_loadstring("\27LJ\2\nZ\0\0\2\0\4\1\t6\0\0\0009\0\1\0*\1\0\0=\1\2\0006\0\0\0009\0\1\0*\1\0\0=\1\3\0K\0\1\0\20floaterm_height\19floaterm_width\6g\bvimµæÌ™\19™³¦ÿ\3\0", "config", "vim-floaterm")
+time([[Config for vim-floaterm]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
+time([[Config for Comment.nvim]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+try_loadstring("\27LJ\2\nD\0\0\2\0\4\0\t6\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\1\0)\1,\1=\1\3\0K\0\1\0\15timeoutlen\ftimeout\6o\bvim\0", "config", "which-key.nvim")
+time([[Config for which-key.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

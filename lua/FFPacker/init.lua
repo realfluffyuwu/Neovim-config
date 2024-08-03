@@ -19,6 +19,21 @@ return require('packer').startup(function(use)
 		end
 	}
 
+	use {
+		'goolord/alpha-nvim',
+		requires = {
+			'nvim-tree/nvim-web-devicons',
+			'nvim-lua/plenary.nvim'
+		},
+		config = function()
+			require 'alpha'.setup(require 'alpha.themes.fluffy'.config)
+		end
+	}
+
+	-- Surround
+	use "tpope/vim-surround"
+
+	-- Repeat
 	use "tpope/vim-repeat"
 
 	-- Notify
@@ -85,7 +100,7 @@ return require('packer').startup(function(use)
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
-			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+			"jackielii/neo-tree-harpoon.nvim"
 		}
 	}
 
@@ -112,7 +127,11 @@ return require('packer').startup(function(use)
 	use "nvim-treesitter/playground"
 
 	-- Harpoon
-	use "theprimeagen/harpoon"
+	use {
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		requires = { "mike-jl/harpoonEx" }
+	}
 
 	-- Undo Tree
 	use "mbbill/undotree"
@@ -122,7 +141,7 @@ return require('packer').startup(function(use)
 	-- Lua Line, AirLine Replacement
 	use {
 		"nvim-lualine/lualine.nvim",
-		requires = { "nvim-tree/nvim-web-devicons" }
+		requires = { "nvim-tree/nvim-web-devicons", opt = true }
 	}
 
 	-- SQF Syntax?
