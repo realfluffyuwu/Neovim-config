@@ -1,6 +1,6 @@
 local lsp_zero = require('lsp-zero')
 
----@diagnostic disable-next-line: unused-local
+
 lsp_zero.on_attach(function(client, bufnr)
 	-- see :help lsp-zero-keybindings
 	-- to learn the available actions
@@ -79,8 +79,10 @@ require('lspconfig').lua_ls.setup({
 				version = 'LuaJIT',
 			},
 			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { 'vim' },
+				globals = {
+					'vim', -- for Vimscript	
+					'expr' -- for GDScript completetion
+				},
 			},
 			workspace = {
 				-- Make the server aware of Neovim runtime files
@@ -98,6 +100,18 @@ local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 
 cmp.setup({
+
+	snippets = {
+		expand = function(args)
+			require('luasnip').lsp_expand(args.body)
+		end
+	},
+
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
+
 	mapping = cmp.mapping.preset.insert({
 		-- `Enter` key to confirm completion
 		['<CR>'] = cmp.mapping.confirm({ select = false }),
@@ -112,5 +126,11 @@ cmp.setup({
 		-- Scroll up and down in the completion documentation
 		['<C-u>'] = cmp.mapping.scroll_docs(-4),
 		['<C-d>'] = cmp.mapping.scroll_docs(4),
-	})
+	}),
+
+	-- adding Math Source to cmp
+	sources = cmp.config.sources({
+		{ name = 'rpncalc' },
+		{ name = 'luasnip' },
+	}),
 })
