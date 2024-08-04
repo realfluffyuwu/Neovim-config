@@ -1,6 +1,3 @@
--- Remaps
-vim.keymap.set("n", "<leader>m", vim.cmd.Ex)
-
 -- Settings
 vim.g.mapleader = " "
 vim.o.relativenumber = true
