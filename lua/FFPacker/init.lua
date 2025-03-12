@@ -11,6 +11,19 @@ return require('packer').startup(function(use)
 	-- Codeium
 	use "Exafunction/codeium.vim"
 
+	-- Tail
+	use {
+		"sa-mendez/tail.nvim",
+		after = "nvim-notify",
+		config = function()
+			require("tail_nvim").setup {
+				smart_tail = true,
+				notifier = require "notify",
+			}
+		end,
+		event = "BufRead",
+	}
+
 	-- Comment
 	use {
 		'numToStr/Comment.nvim',
@@ -47,6 +60,8 @@ return require('packer').startup(function(use)
 			vim.g.floaterm_height = 0.8
 		end
 	}
+
+	use { 'voldikss/fzf-floaterm', requires = { 'voldikss/vim-floaterm' } }
 
 	-- Which-key
 	use {
@@ -147,6 +162,8 @@ return require('packer').startup(function(use)
 	-- SQF Syntax?
 	use "sqwishy/vim-sqf-syntax"
 
+
+
 	-- LSP
 	use {
 		'VonHeikemen/lsp-zero.nvim',
@@ -159,6 +176,9 @@ return require('packer').startup(function(use)
 			-- Autocompletion
 			{ 'hrsh7th/nvim-cmp' },
 			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ 'hrsh7th/cmp-buffer' },
+			{ 'hrsh7th/cmp-path' },
+			{ 'hrsh7th/cmp-cmdline' },
 			{ 'PhilRunninger/cmp-rpncalc' },
 			{ 'L3MON4D3/LuaSnip' },
 		}

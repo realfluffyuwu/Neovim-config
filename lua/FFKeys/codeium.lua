@@ -2,6 +2,11 @@
 -- since I have my own
 vim.g.codeium_disable_bindings = 1
 
+vim.cmd [[
+	hi link CodeiumSuggestionFloat Pmenu
+	hi link CodeiumSuggestionFloatBorder Pmenu
+]]
+
 -- Accept codeium suggestion
 vim.keymap.set("i", "<Tab>", function() return vim.fn["codeium#Accept"]() end, { expr = true, silent = true })
 -- Clear codeium suggestion

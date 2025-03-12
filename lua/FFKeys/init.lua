@@ -17,7 +17,7 @@ local TelescopeThemes = require("telescope.themes")
 
 -- Telescope Fuzzy Find in File
 local fuzzyFindFile = function()
-	Telescope.find_files(TelescopeThemes.get_dropdown {
+	Telescope.current_buffer_fuzzy_find(TelescopeThemes.get_dropdown {
 		winblend = 10,
 		previewer = false,
 	})
@@ -50,3 +50,19 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- Git
 vim.keymap.set("n", "<leader>gs", ":Neotree git_status reveal float<CR>", {})
+
+-- Delete Word Binds
+vim.keymap.set("i", "<C-x>", "<esc>viwxi", { silent = true })
+vim.keymap.set("n", "<C-x>", "viwx", { silent = true })
+
+-- Floating Terminal keybinds
+vim.keymap.set("n", "<leader>ft", ":FloatermToggle<CR>", { silent = true })
+vim.keymap.set("t", "<C-q>", "<C-\\><C-n>:FloatermToggle<CR>", { silent = true })
+vim.keymap.set("t", "<C-x>", "<C-\\><C-n>:FloatermKill<CR>", { silent = true })
+vim.keymap.set("t", "<C-n>", "<C-\\><C-n>:FloatermNew<CR>", { silent = true })
+vim.keymap.set("t", "<C-Space>", "<C-\\><C-n>:Floaterms<CR>", { silent = true })
+vim.keymap.set("t", "<A-Left>", "<C-\\><C-n>:FloatermPrev<CR>", { silent = true })
+vim.keymap.set("t", "<A-Right>", "<C-\\><C-n>:FloatermNext<CR>", { silent = true })
+
+-- Figure out how to make this a nice and easy commnd to run
+-- FloatermNew! --silent py % hood "Floating Terminal is Cool"; exit

@@ -58,11 +58,12 @@ require('lspconfig').pyright.setup({
 	on_attach = lsp_zero.on_attach,
 
 })
+
 require('lspconfig').rust_analyzer.setup({
 	on_attach = lsp_zero.on_attach,
 })
 
-require('lspconfig').tsserver.setup({
+require('lspconfig').ts_ls.setup({
 	on_attach = lsp_zero.on_attach,
 })
 
@@ -124,13 +125,20 @@ cmp.setup({
 		['<C-b>'] = cmp_action.luasnip_jump_backward(),
 
 		-- Scroll up and down in the completion documentation
-		['<C-u>'] = cmp.mapping.scroll_docs(-4),
-		['<C-d>'] = cmp.mapping.scroll_docs(4),
+		['<C-Up>'] = cmp.mapping.scroll_docs(-4),
+		['<C-Down>'] = cmp.mapping.scroll_docs(4),
 	}),
 
 	-- adding Math Source to cmp
 	sources = cmp.config.sources({
+		{ name = 'path' },
+		{ name = 'nvim_lsp' },
+		{ name = 'nvim_lsp_signature_help' },
+		{ name = 'luasnip' },
+		{ name = 'buffer' },
 		{ name = 'rpncalc' },
 		{ name = 'luasnip' },
+	}, {
+		{ name = 'buffer' }
 	}),
 })
